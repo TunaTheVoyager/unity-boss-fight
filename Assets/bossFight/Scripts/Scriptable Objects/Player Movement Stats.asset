@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 4
   dashingPower: 13
-  dashingTime: 0.2
+  dashingTime: 0.3
   dashingCoolDown: 2

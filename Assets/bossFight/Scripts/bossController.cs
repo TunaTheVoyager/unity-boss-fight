@@ -12,7 +12,7 @@ public class bossController : MonoBehaviour
 
     //Player Health Bar
     [SerializeField] private healthBar healthBar;
-    private float damageRatio;
+    [SerializeField] private float damageRatio;
 
     //Attack Point
     private SpriteRenderer bossSpriteRenderer;

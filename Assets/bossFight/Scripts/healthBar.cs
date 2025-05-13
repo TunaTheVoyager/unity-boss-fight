@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class healthBar : MonoBehaviour
 {
     public Image healthBarImage;
-    [SerializeField]private bossController bossController;
 
     void Awake()
     {

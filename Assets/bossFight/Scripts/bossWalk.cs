@@ -7,6 +7,7 @@ public class bossWalk : StateMachineBehaviour
     Transform enemyPosition;
     SpriteRenderer enemySpriteRenderer;
     Rigidbody2D enemyRb;
+    health playerHealth;
 
     [Header("Variables")]
     [SerializeField] private float speed = 2.5f;

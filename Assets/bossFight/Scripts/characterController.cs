@@ -27,6 +27,7 @@ public class characterController : MonoBehaviour
     private Collider2D[] enemy;
     private Vector3 attackPointOffset;
     private bool facingRight;
+    private bool isItAttacking = false;
 
     private void Awake()
     {
@@ -49,8 +50,15 @@ public class characterController : MonoBehaviour
         {
             return;
         }
-
-        characterRb.linearVelocity = new Vector2(characterStats.walkSpeed * moveDirection, characterRb.linearVelocity.y);
+        if(isItAttacking)
+        {
+            // StartCoroutine("cooling");
+            characterRb.linearVelocity = Vector2.zero;
+        }
+        else
+        {
+            characterRb.linearVelocity = new Vector2(characterStats.walkSpeed * moveDirection, characterRb.linearVelocity.y);
+        }
     }
 
     void Update()
@@ -105,9 +113,29 @@ public class characterController : MonoBehaviour
         //attack
         if (Input.GetMouseButtonDown(0))
         {
-            characterAnimator.SetBool("isAttacking",true);
+                int randomAnimationNumber = Random.Range(1, 4);
+                switch (randomAnimationNumber)
+                {
+                    case 1:
+                               
+                        characterAnimator.SetInteger("attackNumber", 1);
+                        characterAnimator.SetTrigger("attacking");
+                        break;
+                    case 2:
+                                
+                        characterAnimator.SetInteger("attackNumber", 2);
+                        characterAnimator.SetTrigger("attacking");
+                        break;
+                    case 3:
+                                
+                        characterAnimator.SetInteger("attackNumber", 3);
+                        characterAnimator.SetTrigger("attacking");
+                        break;
+                }
+            isItAttacking = true;
+
         }
-      
+
     }
 
     private IEnumerator Dash()
@@ -123,9 +151,9 @@ public class characterController : MonoBehaviour
 
         characterTrailRen.emitting = true;
         yield return new WaitForSeconds(characterStats.dashingTime);
+        characterCollider.enabled = true;//Buraya bak!!!!
         StartCoroutine(cooldownsUI.wait());
         characterTrailRen.emitting = false;
-        characterCollider.enabled = true;//Buraya bak!!!!
         characterRb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(characterStats.dashingCoolDown);
@@ -133,7 +161,7 @@ public class characterController : MonoBehaviour
     }
     public void endAttack()
     {
-        characterAnimator.SetBool("isAttacking", false);
+        isItAttacking = false;
     }
     public void characterAttack()
     {  
@@ -146,7 +174,6 @@ public class characterController : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        //buraya yine bak!
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
 
@@ -160,5 +187,13 @@ public class characterController : MonoBehaviour
             attackPointOffset.z
         );
     }
+
+    //attack için
+
+    //private IEnumerator cooling()
+    //{
+    //    yield return new WaitForSeconds(0.50f);
+    //    isItAttacking = false;
+    //}
 
 }

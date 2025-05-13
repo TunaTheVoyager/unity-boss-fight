@@ -1,9 +1,12 @@
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class health : MonoBehaviour
 {
     [SerializeField] public float healthAmount;
-    //private GameObject GameObject;
+    private GameObject boss;
+    private AnimatorStateInfo bossStateInfo;
     private Animator Animator;
     private SpriteRenderer SpriteRenderer;
     private Color currentColor;
@@ -19,7 +22,8 @@ public class health : MonoBehaviour
         //GameObject = GetComponent<GameObject>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
-        currentColor = SpriteRenderer.color;    
+        currentColor = SpriteRenderer.color;
+        boss = GameObject.FindGameObjectWithTag("Boss");
     }
     public void takeDamage(float damage)
     {
@@ -41,12 +45,17 @@ public class health : MonoBehaviour
             {
                 Animator.SetBool("isDie",true);
                 gameObject.GetComponent<characterController>().enabled = false; //Controller devre dýþý
-                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX; //Hareketi Durdur
+                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static; //Hareketi Durdur
                 Invoke("DisableCollider", 1f);
+                //StartCoroutine(waitForBossIdleAnim());
+                boss.GetComponent<Animator>().SetBool("playerDied", true);
             }
             else
             {
                 Animator.SetBool("isDeath", true);
+                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static; //Hareketi Durdur
+                Transform fireball = transform.Find("burningArea");
+                Destroy( fireball.gameObject );
                 Invoke("DisableCollider", 2f);
             }
         }
@@ -60,6 +69,7 @@ public class health : MonoBehaviour
 
     public void DisableCollider()
     {
-          gameObject.GetComponent<Collider2D>().enabled = false;   
+          gameObject.GetComponent<Collider2D>().isTrigger = true;
     }
+
 }

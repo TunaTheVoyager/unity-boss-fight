@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - ground
+  - Boss
   layers:
   - Default
   - TransparentFX
