@@ -88,7 +88,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.66}
+  m_Size: {x: 4, y: 2.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -142,7 +142,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!70 &8895883504834800982
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -177,8 +177,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2.0625}
+  m_Offset: {x: -0.06639385, y: -0.0036885738}
+  m_Size: {x: 0.67540836, y: 2.0403686}
   m_Direction: 0
 --- !u!114 &6314502421923117372
 MonoBehaviour:
@@ -192,8 +192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc8abd74a762ff4eb52e930b2cc259d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownsUI: {fileID: 0}
   characterStats: {fileID: 11400000, guid: 11366801c4d8fd34a9a67676aab0a537, type: 2}
   moveDirection: 0
+  canDash: 1
   attackPoint: {fileID: 8432926253100394308}
   radius: 0.35
   enemyLy:
@@ -242,10 +244,10 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1266348627
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.3
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -254,7 +256,7 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0030136108
+        time: 0
         value: 0.5283209
         inSlope: 0
         outSlope: 0
@@ -276,7 +278,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.96981126, g: 0.96981126, b: 0.96981126, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -294,7 +296,7 @@ TrailRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -355,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 5434032204380771220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.74, y: 0.496, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0.496, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

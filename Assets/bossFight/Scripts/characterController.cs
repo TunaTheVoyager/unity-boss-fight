@@ -27,7 +27,7 @@ public class characterController : MonoBehaviour
     private Collider2D[] enemy;
     private Vector3 attackPointOffset;
     private bool facingRight;
-    private bool isItAttacking = false;
+    private bool isItAttacking = false;    
 
     private void Awake()
     {
@@ -53,6 +53,10 @@ public class characterController : MonoBehaviour
         if(isItAttacking)
         {
             // StartCoroutine("cooling");
+            characterRb.linearVelocity = Vector2.zero;
+        }
+        else if(health.takeDamageAnim)
+        {
             characterRb.linearVelocity = Vector2.zero;
         }
         else
@@ -117,17 +121,17 @@ public class characterController : MonoBehaviour
                 switch (randomAnimationNumber)
                 {
                     case 1:
-                               
+                        attackPointOffset.x = 1.5f;
                         characterAnimator.SetInteger("attackNumber", 1);
                         characterAnimator.SetTrigger("attacking");
                         break;
                     case 2:
-                                
+                        attackPointOffset.x = 1.5f;      
                         characterAnimator.SetInteger("attackNumber", 2);
                         characterAnimator.SetTrigger("attacking");
                         break;
                     case 3:
-                                
+                        attackPointOffset.x = 1.2f;       
                         characterAnimator.SetInteger("attackNumber", 3);
                         characterAnimator.SetTrigger("attacking");
                         break;
@@ -179,13 +183,17 @@ public class characterController : MonoBehaviour
 
     void LateUpdate()
     {
-        // AttackPoint’i her frame, doðru tarafa taþý
         float x = Mathf.Abs(attackPointOffset.x) * (facingRight ? 1f : -1f);
         attackPoint.localPosition = new Vector3(
             x,
             attackPointOffset.y,
             attackPointOffset.z
         );
+    }
+
+    public void endTakeDamageStop()
+    {
+        health.takeDamageAnim = false;
     }
 
     //attack için

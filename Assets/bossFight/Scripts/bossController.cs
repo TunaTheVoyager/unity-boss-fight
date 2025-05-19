@@ -26,7 +26,6 @@ public class bossController : MonoBehaviour
     public void bossAttack()
     {
         player = Physics2D.OverlapBoxAll(attackPoint.transform.position, boxSize, playerLy);
-
         foreach (Collider2D colliderPlayer in player)
         {
             colliderPlayer.GetComponent<health>().takeDamage(damage);
@@ -41,7 +40,6 @@ public class bossController : MonoBehaviour
 
     private void LateUpdate()
     {
-        // AttackPoint’i her frame, doðru tarafa taþý:
         float x = Mathf.Abs(attackPointOffset.x) * (bossSpriteRenderer.flipX == true ? 1f : -1f);
         attackPoint.localPosition = new Vector3(
             x,

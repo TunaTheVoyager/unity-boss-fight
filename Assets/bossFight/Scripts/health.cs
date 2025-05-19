@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class health : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class health : MonoBehaviour
     private Color currentColor;
     private Color targetColor = Color.red;
 
+    private bool isItDead = false;
+
+    public static bool takeDamageAnim = false;
     //private Collider2D targetCollider;
 
     [Range(0f, 1f)]
@@ -33,13 +37,14 @@ public class health : MonoBehaviour
 
         if(CompareTag("Player"))
         {
+            takeDamageAnim = true;
             Animator.SetBool("isTakeDamage",true);
         }
         else
         {
             Animator.SetTrigger("isTakeDamage");
         }
-        if (healthAmount <= 0f)
+        if (healthAmount <= 0f && isItDead == false)
         {
             if (gameObject.CompareTag("Player"))
             {
@@ -47,8 +52,9 @@ public class health : MonoBehaviour
                 gameObject.GetComponent<characterController>().enabled = false; //Controller devre dýþý
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static; //Hareketi Durdur
                 Invoke("DisableCollider", 1f);
-                //StartCoroutine(waitForBossIdleAnim());
                 boss.GetComponent<Animator>().SetBool("playerDied", true);
+                isItDead = true;
+                Invoke("loadScene", 5f);
             }
             else
             {
@@ -57,6 +63,8 @@ public class health : MonoBehaviour
                 Transform fireball = transform.Find("burningArea");
                 Destroy( fireball.gameObject );
                 Invoke("DisableCollider", 2f);
+                isItDead = true;
+                Invoke("loadScene", 5f);
             }
         }
     }
@@ -69,7 +77,12 @@ public class health : MonoBehaviour
 
     public void DisableCollider()
     {
-          gameObject.GetComponent<Collider2D>().isTrigger = true;
+        gameObject.GetComponent<Collider2D>().isTrigger = true;
+    }
+
+    private void loadScene()
+    {
+        SceneManager.LoadScene("bossFight"); //Temporary Method!!!!
     }
 
 }
