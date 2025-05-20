@@ -27,7 +27,9 @@ public class characterController : MonoBehaviour
     private Collider2D[] enemy;
     private Vector3 attackPointOffset;
     private bool facingRight;
-    private bool isItAttacking = false;    
+    private bool isItAttacking = false;
+    //Summon
+    [SerializeField] private GameObject raider;
 
     private void Awake()
     {
@@ -139,6 +141,13 @@ public class characterController : MonoBehaviour
             isItAttacking = true;
 
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if(raider != null)
+            Instantiate(raider, transform.position,Quaternion.identity);
+        }
+        
 
     }
 

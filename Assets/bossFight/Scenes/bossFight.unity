@@ -1183,6 +1183,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 533698768}
+    - target: {fileID: 5772556121528431532, guid: 4bdea194729bd9048a6d16da5ece0c65, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7998483584621676442, guid: 4bdea194729bd9048a6d16da5ece0c65, type: 3}
       propertyPath: healthBar
       value: 
@@ -1249,6 +1253,10 @@ PrefabInstance:
       value: bossCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 6314502421923117372, guid: 5304d64b49dad5140a2e16f07093b362, type: 3}
+      propertyPath: raider
+      value: 
+      objectReference: {fileID: 7389021644669608303, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
+    - target: {fileID: 6314502421923117372, guid: 5304d64b49dad5140a2e16f07093b362, type: 3}
       propertyPath: cooldownsUI
       value: 
       objectReference: {fileID: 1471860470}
@@ -1297,67 +1305,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5304d64b49dad5140a2e16f07093b362, type: 3}
---- !u!1001 &6264859431214609332
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636735700666704656, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389021644669608303, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_Name
-      value: raiderInstance
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389021644669608303, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1370,4 +1317,3 @@ SceneRoots:
   - {fileID: 1319992908}
   - {fileID: 4905582294182147930}
   - {fileID: 3974822891765569666}
-  - {fileID: 6264859431214609332}
