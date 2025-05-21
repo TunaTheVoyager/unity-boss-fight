@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class bossController : MonoBehaviour
@@ -7,8 +8,10 @@ public class bossController : MonoBehaviour
     [SerializeField] private Vector2 boxSize;
     //[SerializeField] private Vector3 gizmosVector = new Vector3(1f, 1f, 1f);
     [SerializeField] private LayerMask playerLy;
+    [SerializeField] private LayerMask summonRaiderLy;
+    private LayerMask combinedLayerMask;
     [SerializeField] public float damage;
-    private Collider2D[] player;
+    private Collider2D[] targets;
 
     //Player Health Bar
     [SerializeField] private healthBar healthBar;
@@ -25,12 +28,22 @@ public class bossController : MonoBehaviour
     }
     public void bossAttack()
     {
-        player = Physics2D.OverlapBoxAll(attackPoint.transform.position, boxSize, playerLy);
-        foreach (Collider2D colliderPlayer in player)
+        combinedLayerMask = summonRaiderLy | playerLy;
+        targets = Physics2D.OverlapBoxAll(attackPoint.transform.position, boxSize, combinedLayerMask);
+        foreach (Collider2D target in targets)
         {
-            colliderPlayer.GetComponent<health>().takeDamage(damage);
-            damageRatio = 0.25f;
-            healthBar.healthBarImage.fillAmount -= damageRatio;
+            if(target.CompareTag("Player"))
+            {
+                target.GetComponent<health>().takeDamage(damage);
+                damageRatio = 0.25f;
+                healthBar.healthBarImage.fillAmount -= damageRatio;
+            }
+            else if(target.CompareTag("Summon"))
+            {
+                target.GetComponent<health>().takeDamage(damage);
+                damageRatio = 0.25f;
+            }
+          
         }
     }
     private void OnDrawGizmos()

@@ -30,6 +30,8 @@ public class characterController : MonoBehaviour
     private bool isItAttacking = false;
     //Summon
     [SerializeField] private GameObject raider;
+    public bool raiderSummoned = false;
+    aggroSystem aggroSystem;
 
     private void Awake()
     {
@@ -39,6 +41,7 @@ public class characterController : MonoBehaviour
         characterAnimator = GetComponent<Animator>(); //
         attackPointOffset = attackPoint.localPosition;
         characterCollider = GetComponent<Collider2D>(); //
+        aggroSystem = GetComponent<aggroSystem>();
     }
     void Start()
     {
@@ -146,6 +149,7 @@ public class characterController : MonoBehaviour
         {
             if(raider != null)
             Instantiate(raider, transform.position,Quaternion.identity);
+            raiderSummoned = true;
         }
         
 
@@ -183,6 +187,7 @@ public class characterController : MonoBehaviour
         foreach (Collider2D colliderEnemy in enemy)
         {
             colliderEnemy.GetComponent<health>().takeDamage(damage);
+            aggroSystem.attackNumber++;
         }
     }
     private void OnDrawGizmos()

@@ -12,7 +12,8 @@ public class raiderPrimaryAlgorithm : StateMachineBehaviour
 
     [Header("Variables")]
     [SerializeField] float raiderSpeed = 2.5f;
-    [SerializeField] float raiderAttackRange = 2.3f;
+    [SerializeField] float raiderAttackRange = 2.8f;
+    public bool deneme = false;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -27,15 +28,15 @@ public class raiderPrimaryAlgorithm : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        if (Vector2.Distance(raiderPosition.position, bossPosition.position) <= raiderAttackRange)
+        if (Vector2.Distance(bossPosition.position,raiderRb.position ) <= raiderAttackRange)
         {
-            animator.SetBool("walking", false);
             raiderRb.linearVelocity = Vector2.zero;
+            animator.SetBool("walking", false);
             animator.SetTrigger("attacking");
         }
         else
         {
-            target = new Vector2(bossPosition.position.x, bossPosition.position.y);
+            target = new Vector2(bossPosition.position.x, raiderPosition.position.y);
             newPosition = Vector2.MoveTowards(raiderPosition.position, target, raiderSpeed * Time.fixedDeltaTime);
             raiderRb.MovePosition(newPosition);
         }

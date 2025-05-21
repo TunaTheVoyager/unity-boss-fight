@@ -13,7 +13,7 @@ public class health : MonoBehaviour
     private Color currentColor;
     private Color targetColor = Color.red;
 
-    private bool isItDead = false;
+    public bool isItDead = false;
 
     public static bool takeDamageAnim = false;
     //private Collider2D targetCollider;
@@ -40,15 +40,19 @@ public class health : MonoBehaviour
             takeDamageAnim = true;
             Animator.SetBool("isTakeDamage",true);
         }
-        else
+        else if(CompareTag("Boss"))
         {
             Animator.SetTrigger("isTakeDamage");
+        }
+        else if(CompareTag("Summon"))
+        {
+            Animator.SetTrigger("takeDamage");
         }
         if (healthAmount <= 0f && isItDead == false)
         {
             if (gameObject.CompareTag("Player"))
             {
-                Animator.SetBool("isDie",true);
+                Animator.SetBool("isDie", true);
                 gameObject.GetComponent<characterController>().enabled = false; //Controller devre dýþý
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static; //Hareketi Durdur
                 Invoke("DisableCollider", 1f);
@@ -56,15 +60,22 @@ public class health : MonoBehaviour
                 isItDead = true;
                 Invoke("loadScene", 5f);
             }
-            else
+            else if (gameObject.CompareTag("Boss"))
             {
                 Animator.SetBool("isDeath", true);
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static; //Hareketi Durdur
                 Transform fireball = transform.Find("burningArea");
-                Destroy( fireball.gameObject );
+                Destroy(fireball.gameObject);
                 Invoke("DisableCollider", 2f);
                 isItDead = true;
                 Invoke("loadScene", 5f);
+            }
+            else if (gameObject.CompareTag("Summon"))
+            {
+                Animator.SetBool("dead",true);
+                GetComponent<raiderController>().enabled = false;
+                Invoke("DisableCollider", 1f);
+                isItDead = true;
             }
         }
     }

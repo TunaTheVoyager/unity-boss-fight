@@ -8,18 +8,16 @@ public class raiderWeapon : MonoBehaviour
     [SerializeField] private float raycastDistance = 2.3f;
     private Animator raiderAnimator;
     public int shotgunAmmo = 2;
+    aggroSystem aggroSystem;
 
     private void Awake()
     {
         raiderAnimator = GetComponent<Animator>();
+        aggroSystem = GetComponent<aggroSystem>();
     }
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            raiderAnimator.SetTrigger("attacking");
-            raiderShoot();
-        }
+
     }
 
     public void raiderShoot()
@@ -31,6 +29,7 @@ public class raiderWeapon : MonoBehaviour
             if (enemy != null)
             {
                 enemy.takeDamage(damage);
+                aggroSystem.attackNumber++;
                 shotgunAmmo -= 1;
                 if(shotgunAmmo == 0)
                 {
@@ -44,7 +43,7 @@ public class raiderWeapon : MonoBehaviour
     {
         AnimatorStateInfo animatorStateInfo = raiderAnimator.GetCurrentAnimatorStateInfo(0);
         raiderAnimator.SetInteger("ammo", 0);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         shotgunAmmo = 2;
         raiderAnimator.SetInteger("ammo", 2);
     }
@@ -54,13 +53,13 @@ public class raiderWeapon : MonoBehaviour
        Gizmos.color = Color.yellow;
         if (raiderController.raiderFlip)
         {
-            Vector3 endOfTheLine = new Vector3(shotPoint.position.x + -2.3f, shotPoint.position.y, shotPoint.position.z);
+            Vector3 endOfTheLine = new Vector3(shotPoint.position.x + -2.8f, shotPoint.position.y, shotPoint.position.z);
             Vector3[] points = { shotPoint.position, endOfTheLine };
             Gizmos.DrawLineStrip(points, false);
         }
        else
         {
-            Vector3 endOfTheLine = new Vector3(shotPoint.position.x + 2.3f, shotPoint.position.y, shotPoint.position.z);
+            Vector3 endOfTheLine = new Vector3(shotPoint.position.x + 2.8f, shotPoint.position.y, shotPoint.position.z);
             Vector3[] points = { shotPoint.position, endOfTheLine };
             Gizmos.DrawLineStrip(points, false);
         }

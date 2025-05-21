@@ -1183,9 +1183,13 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 533698768}
+    - target: {fileID: 3033976373654303320, guid: 4bdea194729bd9048a6d16da5ece0c65, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3206713781589911274, guid: 599e5ad625d63d441bbfc9af9a0cc78d, type: 3}
     - target: {fileID: 5772556121528431532, guid: 4bdea194729bd9048a6d16da5ece0c65, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7998483584621676442, guid: 4bdea194729bd9048a6d16da5ece0c65, type: 3}
       propertyPath: healthBar
@@ -1252,10 +1256,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: bossCharacter
       objectReference: {fileID: 0}
-    - target: {fileID: 6314502421923117372, guid: 5304d64b49dad5140a2e16f07093b362, type: 3}
-      propertyPath: raider
-      value: 
-      objectReference: {fileID: 7389021644669608303, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
     - target: {fileID: 6314502421923117372, guid: 5304d64b49dad5140a2e16f07093b362, type: 3}
       propertyPath: cooldownsUI
       value: 

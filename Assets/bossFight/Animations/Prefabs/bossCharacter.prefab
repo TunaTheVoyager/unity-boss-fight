@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6314502421923117372}
   - component: {fileID: 2237906394030079848}
   - component: {fileID: 7941924725729362128}
+  - component: {fileID: 6736040046548022386}
   m_Layer: 7
   m_Name: bossCharacter
   m_TagString: Player
@@ -202,6 +203,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damage: 100
+  raider: {fileID: 7389021644669608303, guid: ba68ba6681125594489bdca0fd41410e, type: 3}
 --- !u!96 &2237906394030079848
 TrailRenderer:
   serializedVersion: 3
@@ -332,6 +334,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthAmount: 100
   redStep: 0
+--- !u!114 &6736040046548022386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952344609391106284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f5917360ee61c48a1551ac8fe3146a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: 10
 --- !u!1 &5434032204380771220
 GameObject:
   m_ObjectHideFlags: 0

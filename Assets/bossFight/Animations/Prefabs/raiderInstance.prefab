@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 8537322294319959769}
   - component: {fileID: 1506099463198742979}
   - component: {fileID: -153366597687190252}
+  - component: {fileID: 1671837158904623649}
+  - component: {fileID: 3245559960386548632}
   m_Layer: 8
   m_Name: raiderInstance
   m_TagString: Summon
@@ -160,7 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPoint: {fileID: 3157365719304881860}
   damage: 50
-  raycastDistance: 3
+  raycastDistance: 4
+  shotgunAmmo: 2
 --- !u!70 &8537322294319959769
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,7 +171,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7389021644669608303}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -220,7 +223,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -237,3 +240,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee3202f8114691449bb29b423395d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1671837158904623649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389021644669608303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fd7afcefd272046ae9dbe16c2e827a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthAmount: 100
+  isItDead: 0
+  redStep: 0
+--- !u!114 &3245559960386548632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389021644669608303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f5917360ee61c48a1551ac8fe3146a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggroScore: 0
+  attackPoint: 20
+  attackNumber: 0
