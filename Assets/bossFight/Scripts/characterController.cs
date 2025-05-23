@@ -164,7 +164,8 @@ public class characterController : MonoBehaviour
         characterRb.linearVelocity = new Vector2(characterStats.dashingPower * moveDirection, characterRb.linearVelocity.y);
 
         characterCollider.enabled = false;
-        characterAnimator.Play("bossCharacterDashAnim");
+        //characterAnimator.Play("bossCharacterDashAnim");
+        characterAnimator.SetTrigger("dash");
 
         characterTrailRen.emitting = true;
         yield return new WaitForSeconds(characterStats.dashingTime);
